@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <style>
+        /* Global styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0oEHEUbt3Cv-Yv81D_t0Rs5TEQzKAyDPExQ&usqp=CAU");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /* Header styles */
+        header {
+            background-color: #007BFF;
+            color: pink;
+            padding: 10px 0;
+            text-align: center;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        
+
+        /* Navigation styles */
+        nav {
+            background-color: #e39e9e;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            justify-content: space-between;
+        }
+
+        nav ul {
+            list-style-type: none;
+        }
+
+        nav li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #fff;
+            justify-content: space-between;
+        }
+
+        /* Main content styles */
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 10px;
+            background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzIKTAgvEEOkUX6UhJEikzYvlNw3-c7x0JlQ&usqp=CAU");
+            background-repeat: no-repeat;
+            background-size: cover;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            color:  blue;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+       
+        
+        .search-bar {
+            position: absolute;
+            align-items: center;
+            justify-content: space-between;
+            right: 500px;
+            padding: 5px;
+            border-radius: 2px;
+        }
+        .hash {
+            position: fixed;
+            top: 10px; 
+            right: 10px; 
+            transition: all;
+        }
+
+        .button {
+            padding: 6px 24px;
+            border: 2px solid #fff;
+            background: transparent;
+            border-radius: 6px;
+            cursor: pointer;
+            
+        }
+        .input-box {
+            justify-content: center;
+            border-radius: 10px;
+            padding: 20px;
+            border-width: 10px;
+
+        }
+        h2{
+            justify-content: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Weather Dashboard</div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#help">Help</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>Welcome to weather Destination</h1>
+        <p>
+            Here I am here to provide a information about weather at any  location.
+        </p>
+        
+    </div>
+        <div id="weather-info"></div>
+    </div>
+      
+    
+    <div class="hash">
+        <button type="submit" class="button">Log out</button>
+    </div>
+    <main>
+        <!-- Search bar -->
+        <div class="search-bar">
+            <input type="text" id="place-input" placeholder="Enter a place...">
+            <button id="search-button" onclick="searchPlace()">Search</button>
+        </div>
+        </main>
+        <script src="weather.js"></script>
+
+</body>
+</html>
