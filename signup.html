@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website with Login & Registration Form</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+</head>
+<body>
+        
+    <style>
+      * {
+        font-family: 'Poppins', serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      a{
+        text-decoration: none;
+      }
+      .header{
+        position: fixed;
+        height: 80px;
+        width: 100%;
+        background: grey;
+        z-index: 100;
+        padding: 0 20px;
+      }
+      .nav {
+        max-width: 1100px;
+        width: 100%;
+        margin: 0 auto;
+      }
+      .nav,
+      .nav_item {
+        display: flex;
+        height: 100%;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .nav_link,
+      .button {
+        color: #fff;
+      }
+      .nav_logo {
+        font-size: 25px;
+      }
+      .nav_item {
+        column-gap: 25px;
+      }
+      .nav,
+      .nav_link:hover {
+        color:#d9d9d9
+      }
+      .button {
+        padding: 6px 24px;
+        border: 2px solid #fff;
+        background: transparent;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+      .button:active {
+        transform: scale(0.98);
+      }
+      .home{
+        position: relative;
+        height: 100vh;
+        width: 100%;
+        background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCEgPQeporVoabvKQVJb3uqcmKNtEJZhaW2A&usqp=CAU");
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+      .home::before{
+        content: "";
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        background-color: rgba(0,0,0,0.6);
+        z-index: 100;
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.5s ease-out;
+
+      }
+      .home.show::before{
+        pointer-events: auto;
+        opacity: 1;
+      }
+      .form_container {
+        position: absolute;
+        max-width: 320px;
+        width: 100%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(1.2);
+        z-index: 101;
+        background: #fff;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: rgba(0,0,0,0.1);
+        pointer-events: none;
+        transition: all 0.4s ease-out;
+      }
+      .home.show .form_container {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translate(-50%, -50%) scale(1);
+      }
+      .signup_form {
+        display: flex;
+      }
+      .form_container.active .signup_form {
+        display: flex;
+      }
+      
+      .form_close {
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        color: #0b0217;
+        font-size: 22px;
+        opacity: 0.7;
+        cursor: pointer;
+      }
+      .form_container h2 {
+        font-size: 22px;
+        color: #0b0217;
+        text-align: center;
+
+      }
+      .input_box {
+        position: relative;
+        margin-top: 30px;
+        width: 100%;
+        height: 40px;
+      }
+      .input_box input {
+        height:100%;
+        width: 100%;
+        border: none;
+        outline: none;
+        border-bottom: 1.5px solid #aaaaaa;
+        padding: 0 30px;
+        color: #333;
+        transition: all 0.2s ease;
+        
+
+        }
+        .input_box input:focus{
+            border-color: #7d2ae8;
+        }
+        .input_box i {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 20px;
+         }
+         .input_box i.email,
+         .input_box i.password {
+            left: 0;
+            color: #707070;
+
+         }
+         .input_box input:focus ~ i.email,
+         .input_box input:focus ~ i.password {
+            border-color: #7d2ae8;
+        }
+         .input_box i.pw_hide {
+            right: 0;
+            font-size: 18px;
+         }
+         .option_field {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+         }
+         .form_container a {
+            color: #7d2ae8;
+            font-size: 12px;
+         }
+         .form_container a:hover {
+            text-decoration: underline;
+         }
+         .checkbox {
+            display: flex;
+            column-gap: 8px;
+            white-space: nowrap;
+            font-size: 12px;
+         }
+         .chechbox label {
+            font-size: 12px;
+            cursor: pointer;
+            user-select: none;
+            color: #0b0217;
+         }
+         .form_container .button {
+            background: #7d2ae8;
+            margin-top: 30px;
+            width: 100%;
+            padding: 10px 0;
+            border-radius: 10px;
+         }
+         .login_signup {
+            font-size: 12px;
+            text-align: center;
+            margin-top: 15px;
+         }
+    </style>
+        <header class="header">
+          <nav class="nav">
+              <a href="#" class="nav_logo">Website</a>
+              <ul class="nav_items">
+                  <li class="nav_item">
+                      <a href="#" class="nav_link">Home</a>
+                      <a href="#" class="nav_link">Product</a>
+                      <a href="#" class="nav_link">Services</a>
+                      <a href="#" class="nav_link">Contact</a>
+                  </li>
+              </ul>
+              <button class="button" id="form-open">Login</button>
+          </nav>
+      </header>
+      <section class="home">
+          <div class="form_container">
+              <i class="uil uil-times form_close"></i>
+
+              <div class="form signup_form">
+                  <form id="signup-form" method="POST" action="signup.php">
+                      <h2>Signup</h2>
+                      <div class="input_box">
+                          <input type="email" name="signup_email" placeholder="Enter your email" required/>
+                          <i class="uil uil-envelope-alt email"></i>
+                      </div>
+                      <div class="input_box">
+                          <input type="password" name="signup_password" placeholder="Create password" required/>
+                          <i class="uil uil-lock password"></i>
+                          <i class="uil uil-eye-slash pw_hide" ></i>
+                      </div>
+                      <div class="input_box">
+                          <input type="password" name="confirm_password" placeholder="Confirm password" required/>
+                          <i class="uil uil-lock password"></i>
+                          <i class="uil uil-eye-slash pw_hide" ></i>
+                      </div>
+                      <button type="submit" class="button">Signup Now</button>
+                      <div class="login_signup">
+                        Already have an account? <a href="#" id="login-link">Login</a>
+                    </div>
+                  </form>
+              </div>
+          </div>
+      </section>
+      <script src="script.js"></script>
+  </body>
+  </html>
